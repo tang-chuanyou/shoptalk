@@ -6,6 +6,7 @@ class Application_Model_ShopOwnership
     protected $_shop_id;
     protected $_description;
     protected $_image_url;
+    protected $_status;
 
     public function setUserId($user_id)
     {
@@ -51,14 +52,25 @@ class Application_Model_ShopOwnership
         return $this->_image_url;
     }
 
+    public function getStatus()
+    {
+        return $this->_status;
+    }
+
+    public function setStatus($status)
+    {
+        $this->_status = $status;
+        return $this;
+    }
+
     public function toArray()
     {
         return array('user_id'=> $this->getUserId(),
                      'shop_id'=> $this->getShopId(),
                      'description'=> $this->getDescription(),
-                     'image_url'=> $this->getImageURL()
+                     'image_url'=> $this->getImageURL(),
+                     'status'=>$this->getStatus()
         );
     }
-
 }
 

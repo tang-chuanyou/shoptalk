@@ -26,6 +26,7 @@
           <actionMethod actionName="checkFavorite"/>
           <actionMethod actionName="deleteFavorite"/>
           <actionMethod actionName="applyShopOwnership"/>
+          <actionMethod actionName="checkOwnershio"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory enabled="false"/>
@@ -83,6 +84,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="User">
             <viewScriptFile forActionName="applyShopOwnership"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="checkOwnershio"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

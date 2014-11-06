@@ -156,6 +156,42 @@ class UserController extends Zend_Controller_Action
         exit(); 
     }
 
+    public function checkOwnershipAction()
+    {
+        $status = 'success';
+        $fyi = '';
+
+        $ownership = new Application_Model_ShopOwnership();
+        $mapper = new Application_Model_ShopOwnershipMapper();
+        $ownership->setUserId($this->_getParam("user_id"))
+                  ->setShopId($this->_getParam("shop_id"))
+        ;
+        $fyi = $ownership->toArray();
+
+        try{
+            //check if ownership record exists
+            $check_result = $mapper->find($ownership);
+
+            if(0 < count($check_result)) {
+                // ownership exists
+                $status = 'exists';
+                $fyi = $check_result[0]['status'];
+            }else{
+                // ownership not exists
+                $status = 'not exists';
+            }
+        }catch(Exception $e){
+            $status = 'exception';
+            $fyi = $e->getMessage();
+        }
+
+        $result = array('fyi'=>$fyi, 'status'=>$status);
+        echo Zend_Json::encode($result);
+
+        exit();
+    }
+
+
 }
 
 
