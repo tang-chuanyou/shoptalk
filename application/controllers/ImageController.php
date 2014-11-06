@@ -19,17 +19,24 @@ class ImageController extends Zend_Controller_Action
         $fyi = '';
         
         try{
-            $upload = new Zend_File_Transfer();
-            $upload -> receive();
-       
-            $filepath_tmp = $upload->getFileName();
-            $filename = basename($filepath_tmp);
-            $filepath_new = '/images/' . $filename;
-            /*if(!rename($filepath_tmp, $_SERVER["DOCUMENT_ROOT"] . $filepath_new)) {
+            $upload = new Zend_File_Transfer_Adapter_Http();
+
+            if($upload -> receive()) {
+                $filepath = $upload->getFileName();
+                $filename = basename($filepath);
+                $filepath_new = '/images/' . $filename;
+                if(rename ($filepath, $_SERVER["DOCUMENT_ROOT"] . $filepath_new)) {
+                    $fyi = urlencode($filepath_new);
+                    $status = 'success';
+                }else {
+                    $fyi = error_get_last();
+                    $status = 'error';
+                }
+            }else {
                 $status = 'fail';
-            }*/
+                $fyi = $upload->getMessages();
+            }
              
-            $fyi = urlencode($_SERVER["DOCUMENT_ROOT"] . $filepath_new);
         }catch(Exception $e){
             $status = 'exception';
             $fyi = $e->getMessage();
