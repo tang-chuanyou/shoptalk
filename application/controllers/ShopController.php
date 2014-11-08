@@ -47,8 +47,15 @@ class ShopController extends Zend_Controller_Action
         exit();
     }
 
+    public function saveProductAction()
+    {
+        // action body
+    }
+
 
 }
+
+
 
 
 

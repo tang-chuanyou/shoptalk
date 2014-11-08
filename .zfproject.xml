@@ -18,6 +18,7 @@
         <controllerFile controllerName="Shop">
           <actionMethod actionName="index"/>
           <actionMethod actionName="save"/>
+          <actionMethod actionName="saveProduct"/>
         </controllerFile>
         <controllerFile controllerName="User">
           <actionMethod actionName="index"/>
@@ -36,6 +37,7 @@
           <dbTableFile dbTableName="Shops"/>
           <dbTableFile dbTableName="UserFavorites"/>
           <dbTableFile dbTableName="ShopOwnership"/>
+          <dbTableFile dbTableName="ShopProducts"/>
         </dbTableDirectory>
         <modelFile modelName="ShopMapper"/>
         <modelFile modelName="Shop"/>
@@ -44,6 +46,7 @@
         <modelFile modelName="User"/>
         <modelFile modelName="ShopOwnership"/>
         <modelFile modelName="ShopOwnershipMapper"/>
+        <modelFile modelName="ShopProduct"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
@@ -87,6 +90,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="User">
             <viewScriptFile forActionName="checkOwnershio"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Shop">
+            <viewScriptFile forActionName="saveProduct"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
