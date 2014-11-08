@@ -47,15 +47,42 @@ class ShopController extends Zend_Controller_Action
         exit();
     }
 
+    /* save shop product */
+    /* logic - check if provided product already exists or not
+               if not existing, add the product to the shop
+    */
     public function saveProductAction()
     {
-        // action body
+        $status = 'success';
+        $fyi = '';
+
+        $product = new Application_Model_ShopProduct();
+        $product_mapper = new Application_Model_ShopProductMapper();
+        $product->setShopId($this->_getParam("shop_id"))
+                ->setName($this->_getParam("name"))
+                ->setKey($this->_getParam("key"))
+                ->setImageURL($this->_getParam("image_url"));
+        $fyi = $product->toArray();
+
+        try{
+            // check if the product exists
+            $find_result = $product_mapper->find($product);
+            if(0 === count($find_result)) {
+                // product not exists and addd product 
+                $product_mapper->save($product);
+            }else{
+                // mark action status as 'exists'
+                $status = 'exists';
+            }
+        }catch(Exception $e){
+            $status = 'exception[' .  $e.getMessage() . ']';
+        }
+
+        $result = array('fyi'=>$fyi, 'status'=>$status);
+        echo Zend_Json::encode($result);
+        exit();
+    
     }
 
 
 }
-
-
-
-
-
