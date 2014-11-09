@@ -118,11 +118,11 @@ class ShopController extends Zend_Controller_Action
         $product->setShopId($this->_getParam("shop_id"))
                 ->setName($this->_getParam("name"))
         ;
-        $fyi = $product->getArray();
+        $fyi = $product->toArray();
         $product_mapper = new Application_Model_ShopProductMapper();
 
         try{
-            $product_mapper->deleteProduct($product);
+            $product_mapper->delete($product);
             $status = 'success';
         }catch(Exception $e){
             $status = 'exception[' .  $e.getMessage() . ']';
