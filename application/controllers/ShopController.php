@@ -98,7 +98,32 @@ class ShopController extends Zend_Controller_Action
         try{
             $find_result = $product_mapper->getProducts($shop);
             $fyi = $find_result;
-            $status = 'status';
+            $status = 'success';
+        }catch(Exception $e){
+            $status = 'exception[' .  $e.getMessage() . ']';
+        }
+
+        $result = array('fyi'=>$fyi, 'status'=>$status);
+        echo Zend_Json::encode($result);
+        exit();
+    }
+
+    /* delete given product for shop */
+    public function deleteProductAction()
+    {
+        $status = 'success';
+        $fyi = '';
+
+        $product = new Application_Model_ShopProduct();
+        $product->setShopId($this->_getParam("shop_id"))
+                ->setName($this->_getParam("name"))
+        ;
+        $fyi = $product->getArray();
+        $product_mapper = new Application_Model_ShopProductMapper();
+
+        try{
+            $product_mapper->deleteProduct($product);
+            $status = 'success';
         }catch(Exception $e){
             $status = 'exception[' .  $e.getMessage() . ']';
         }
