@@ -98,7 +98,7 @@ class ShopController extends Zend_Controller_Action
         try{
             $find_result = $product_mapper->getProducts($shop);
             $fyi = $find_result;
-            $status = 'status';
+            $status = 'success';
         }catch(Exception $e){
             $status = 'exception[' .  $e.getMessage() . ']';
         }
