@@ -84,5 +84,28 @@ class ShopController extends Zend_Controller_Action
     
     }
 
+    /* get all products for given shop */
+    public function getProductsAction()
+    {
+        $status = 'success';
+        $fyi = '';
+
+        $shop = new Application_Model_Shop();
+        $shop->setId($this->_getParam("shop_id"));
+        $fyi = $shop->getId();
+        $product_mapper = new Application_Model_ShopProductMapper();
+
+        try{
+            $find_result = $product_mapper->getProducts($shop);
+            $fyi = $find_result;
+            $status = 'status';
+        }catch(Exception $e){
+            $status = 'exception[' .  $e.getMessage() . ']';
+        }
+
+        $result = array('fyi'=>$fyi, 'status'=>$status);
+        echo Zend_Json::encode($result);
+        exit();
+    }
 
 }
