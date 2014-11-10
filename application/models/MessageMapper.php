@@ -28,7 +28,7 @@ class Application_Model_MessageMapper
             'text' => $message->getText(),
             'user_id' => $message->getUserId(),
             'from_user_id' => $message->getFromUserId(),
-            'image_url' => $product->getImageURL()
+            'image_url' => $message->getImageURL()
         );
         $this->getDbTable()->insert($data);
     }
@@ -36,7 +36,7 @@ class Application_Model_MessageMapper
     public function getUserMessages(Application_Model_Shop $shop, Application_Model_User $user)
     {
         $adapter = Zend_Db_Table::getDefaultAdapter();
-        $result = $adapter->query("select * from t_messages where shop_id = ? and user_id = ?", $shop->getId(), $user->getId())
+        $result = $adapter->query("select * from t_messages where shop_id = ? and user_id = ?", array($shop->getId(), $user->getId()))
                           ->fetchAll();
         return $result;
     }

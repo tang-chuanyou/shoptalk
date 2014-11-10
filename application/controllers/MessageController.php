@@ -19,7 +19,7 @@ class MessageController extends Zend_Controller_Action
         $fyi = '';
 
         $message = new Application_Model_Message();
-        $message_mapper = new Application_Model_MessageMapper();
+        $mapper = new Application_Model_MessageMapper();
         $message->setShopId($this->_getParam("shop_id"))
                 ->setText($this->_getParam("text"))
                 ->setUserId($this->_getParam("user_id"))
@@ -28,10 +28,10 @@ class MessageController extends Zend_Controller_Action
         $fyi = $message->toArray();
 
         try{ 
-            $shop_mapper->save($shop);
+            $mapper->save($message);
             $status = 'success';
         }catch(Exception $e){
-            $status = 'exception[' .  $e.getMessage() . ']';
+            $status = 'exception[' .  $e->getMessage() . ']';
         }
 
         $result = array('fyi'=>$fyi, 'status'=>$status);
@@ -49,7 +49,7 @@ class MessageController extends Zend_Controller_Action
         $shop->setId($this->_getParam("shop_id"));
         $user = new Application_Model_User();
         $user->setId($this->_getParam("user_id"));
-        $fyi = @{@"shop_id":$shop->getId(), @"user_id":$user->getId()};
+        $fyi = ["shop_id"=>$shop->getId(), "user_id"=>$user->getId()];
 
         $mapper = new Application_Model_MessageMapper();
 
@@ -58,7 +58,7 @@ class MessageController extends Zend_Controller_Action
             $fyi = $result;
             $status = 'success';
         }catch(Exception $e){
-            $status = 'exception[' .  $e.getMessage() . ']';
+            $status = 'exception[' .  $e->getMessage() . ']';
         }
 
         $result = array('fyi'=>$fyi, 'status'=>$status);
@@ -74,16 +74,16 @@ class MessageController extends Zend_Controller_Action
 
         $shop = new Application_Model_Shop();
         $shop->setId($this->_getParam("shop_id"));
-        $fyi = @{@"shop_id":$shop->getId()};
+        $fyi = ["shop_id"=>$shop->getId()];
 
         $mapper = new Application_Model_MessageMapper();
 
         try{
-            $result = mapper->getUserMessages($shop);
+            $result = $mapper->getUserMessages($shop);
             $fyi = $result;
             $status = 'success';
         }catch(Exception $e){
-            $status = 'exception[' .  $e.getMessage() . ']';
+            $status = 'exception[' .  $e->getMessage() . ']';
         }
 
         $result = array('fyi'=>$fyi, 'status'=>$status);
