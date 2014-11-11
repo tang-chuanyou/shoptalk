@@ -79,7 +79,7 @@ class MessageController extends Zend_Controller_Action
         $mapper = new Application_Model_MessageMapper();
 
         try{
-            $result = $mapper->getUserMessages($shop);
+            $result = $mapper->getShopMessages($shop);
             $fyi = $result;
             $status = 'success';
         }catch(Exception $e){

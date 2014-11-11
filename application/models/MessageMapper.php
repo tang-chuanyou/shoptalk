@@ -46,7 +46,7 @@ class Application_Model_MessageMapper
     public function getShopMessages(Application_Model_Shop $shop)
     {
         $adapter = Zend_Db_Table::getDefaultAdapter();
-        $result = $adapter->query("select * from t_messages where shop_id = ?", $message->getShopId())
+        $result = $adapter->query("select * from t_messages where shop_id = ?", $shop->getId())
                           ->fetchAll();
         return $result;
     }
