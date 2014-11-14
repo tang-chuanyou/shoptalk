@@ -22,7 +22,7 @@ class ShopController extends Zend_Controller_Action
         $shop_mapper = new Application_Model_ShopMapper();
         $shop->setId($this->_getParam("shop_id"))
              ->setAddr($this->_getParam("addr"))
-             ->setDesc($this->_getParam("desc"))
+             ->setDesc($this->_getParam("description"))
              ->setName($this->_getParam("name"))
              ->setPhone($this->_getParam("phone"))
              ->setImageURL($this->_getParam("image_url"));
