@@ -191,6 +191,66 @@ class UserController extends Zend_Controller_Action
         exit();
     }
 
+    public function signInAction()
+    {
+        $status = 'fail';
+        $fyi = '';
+
+        $user = new Application_Model_User();
+        $mapper = new Application_Model_UserMapper();
+        $user->setId($this->_getParam("user_id"))
+             ->setPassword($this->_getParam("password"))
+        ;
+        $fyi = $user->toArray();
+
+        try{
+            //check if user record exists
+            $check_result = $mapper->find($user);
+
+            if(0 < count($check_result)) {
+                // user exists
+                $status = 'exists';
+                $fyi = $check_result;
+            }else{
+                // user not exists
+                $status = 'not exists';
+            }
+        }catch(Exception $e){
+            $status = 'exception';
+            $fyi = $e->getMessage();
+        }
+
+        $result = array('fyi'=>$fyi, 'status'=>$status);
+        echo Zend_Json::encode($result);
+
+        exit();
+    }
+
+    public function signUpAction()
+    {
+        $status = 'fail';
+        $fyi = '';
+
+        $user = new Application_Model_User();
+        $mapper = new Application_Model_UserMapper();
+        $user->setId($this->_getParam("user_id"))
+             ->setPassword($this->_getParam("password"))
+        ;
+        $fyi = $user->toArray();
+
+        try{
+            $check_result = $mapper->save($user);
+            $status = 'success';
+        }catch(Exception $e){
+            $status = 'exception';
+            $fyi = $e->getMessage();
+        }
+
+        $result = array('fyi'=>$fyi, 'status'=>$status);
+        echo Zend_Json::encode($result);
+
+        exit();
+    }
 
 }
 
