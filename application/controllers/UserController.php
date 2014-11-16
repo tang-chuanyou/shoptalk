@@ -207,7 +207,7 @@ class UserController extends Zend_Controller_Action
             //check if user record exists
             $check_result = $mapper->find($user);
 
-            if(0 < count($check_result)) {
+            if($check_result && 0 < count($check_result)) {
                 // user exists
                 $status = 'exists';
                 $fyi = $check_result;

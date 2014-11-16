@@ -34,7 +34,7 @@ class Application_Model_UserMapper
     {
         $adapter = Zend_Db_Table::getDefaultAdapter();
         $result = $adapter->query("select * from t_users where user_id = ? and password = ?", array($user->getId(), $user->getPassword()))
-                          ->fetchAll();
+                          ->fetch();
         return $result;
     }
 

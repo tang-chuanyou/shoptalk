@@ -24,7 +24,7 @@ class Application_Model_User
 
     public function setPassword($passwd)
     {
-        $this->_password = password_hash($passwd, PASSWORD_DEFAULT);
+        $this->_password = hash('sha256', $passwd);
         return $this;
     }
 
