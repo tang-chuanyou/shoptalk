@@ -5,8 +5,10 @@ class Application_Model_Message
     protected $_shop_id;
     protected $_text;
     protected $_user_id;
-    protected $_from_user_id;
+    protected $_owner_user_id;
     protected $_image_url;
+    protected $_closed_by_user;
+    protected $_closed_by_owner;
 
     public function getShopId()
     {
@@ -41,14 +43,14 @@ class Application_Model_Message
         return $this;
     }
 
-    public function getFromUserId()
+    public function getOwnerUserId()
     {
-        return $this->_from_user_id;
+        return $this->_owner_user_id;
     }
 
-    public function setFromUserId($user_id)
+    public function setOwnerUserId($user_id)
     {
-        $this->_from_user_id = $user_id;
+        $this->_owner_user_id = $user_id;
         return $this;
     }
 
@@ -63,13 +65,37 @@ class Application_Model_Message
         return $this;
     }
 
+    public function getClosedByUser()
+    {
+        return $this->_closed_by_user;
+    }
+
+    public function setClosedByUser($user_id)
+    {
+        $this->_closed_by_user = $user_id;
+        return $this;
+    }
+
+    public function getClosedByOwner()
+    {
+        return $this->_closed_by_owner;
+    }
+
+    public function setClosedByOwner($user_id)
+    {
+        $this->_closed_by_owner = $user_id;
+        return $this;
+    }
+
     public function toArray()
     {
         return array('shop_id'=>$this->_shop_id,
                      'text'=>$this->_text,
                      'user_id'=>$this->_user_id,
-                     'from_user_id'=>$this->_from_user_id,
-                     'image_url'=>$this->_image_url
+                     'owner_user_id'=>$this->_owner_user_id,
+                     'image_url'=>$this->_image_url,
+                     'closed_by_user'=>$this->_closed_by_user,
+                     'closed_by_owner'=>$this->_closed_by_owner
         );
     }
 }
