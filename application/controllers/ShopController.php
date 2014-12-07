@@ -25,7 +25,10 @@ class ShopController extends Zend_Controller_Action
              ->setDesc($this->_getParam("description"))
              ->setName($this->_getParam("name"))
              ->setPhone($this->_getParam("phone"))
-             ->setImageURL($this->_getParam("image_url"));
+             ->setImageURL($this->_getParam("image_url"))
+             ->setLatitude($this->_getParam("latitude"))
+             ->setLongitude($this->_getParam("longitude"))
+        ;
         $fyi = $shop->getId();
 
         try{ 

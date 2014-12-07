@@ -20,7 +20,7 @@ class Application_Model_ShopMapper
         }
         return $this->_dbTable;
     }
-    
+
     public function find(Application_Model_Shop $shop)
     {
         $result = $this->getDbTable()->find($shop->getId());
@@ -35,7 +35,9 @@ class Application_Model_ShopMapper
             'description' => $shop->getDesc(),
             'image_url' => $shop->getImageURL(),
             'name' => $shop->getName(),
-            'phone' => $shop->getPhone()
+            'phone' => $shop->getPhone(),
+            'latitude' => $shop->getLatitude(),
+            'longitude' => $shop->getLongitude()
         );
 
         $this->getDbTable()->insert($data);

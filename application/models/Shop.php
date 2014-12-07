@@ -8,6 +8,8 @@ class Application_Model_Shop
     protected $_imageURL;
     protected $_name;
     protected $_phone;
+    protected $_longitude;
+    protected $_latitude;
 
     public function __construct(array $options = null)
     {
@@ -33,7 +35,7 @@ class Application_Model_Shop
         }
         return $this->$method();
     }
-   
+
     public function setOptions(array $options)
     {
         $methods = get_class_methods($this);
@@ -110,6 +112,28 @@ class Application_Model_Shop
     public function getPhone()
     {
         return $this->_phone;
+    }
+
+    public function setLatitude($latitude)
+    {
+       $this->_latitude = $latitude;
+       return $this;
+    }
+
+    public function getLatitude()
+    {
+        return $this->_latitude;
+    }
+
+    public function setLongitude($longitude)
+    {
+        $this->_longitude = $longitude;
+        return $this;
+    }
+
+    public function getLongitude()
+    {
+        return $this->_longitude;
     }
 
 }
