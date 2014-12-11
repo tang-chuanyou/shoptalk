@@ -21,13 +21,17 @@ class ShopController extends Zend_Controller_Action
         $shop = new Application_Model_Shop();
         $shop_mapper = new Application_Model_ShopMapper();
         $shop->setId($this->_getParam("shop_id"))
-             ->setAddr($this->_getParam("addr"))
              ->setDesc($this->_getParam("description"))
              ->setName($this->_getParam("name"))
              ->setPhone($this->_getParam("phone"))
              ->setImageURL($this->_getParam("image_url"))
              ->setLatitude($this->_getParam("latitude"))
              ->setLongitude($this->_getParam("longitude"))
+             ->setStreet($this->_getParam("street"))
+             ->setCity($this->_getParam("city"))
+             ->setState($this->_getParam("state"))
+             ->setZipCode($this->_getParam("zip_code"))
+             ->setCountry($this->_getParam("country"))
         ;
         $fyi = $shop->getId();
 

@@ -3,13 +3,17 @@
 class Application_Model_Shop
 {
     protected $_id;
-    protected $_addr;
     protected $_desc;
     protected $_imageURL;
     protected $_name;
     protected $_phone;
     protected $_longitude;
     protected $_latitude;
+    protected $_street;
+    protected $_city;
+    protected $_state;
+    protected $_zipCode;
+    protected $_country;
 
     public function __construct(array $options = null)
     {
@@ -134,6 +138,61 @@ class Application_Model_Shop
     public function getLongitude()
     {
         return $this->_longitude;
+    }
+
+    public function setStreet($street)
+    {
+        $this->_street = $street;
+        return $this;
+    }
+
+    public function getStreet()
+    {
+        return $this->_street;
+    }
+
+    public function setCity($city)
+    {
+        $this->_city = $city;
+        return $this;
+    }
+
+    public function getCity()
+    {
+        return $this->_city;
+    }
+
+    public function setState($state)
+    {
+        $this->_state = $state;
+        return $this;
+    }
+
+    public function getState()
+    {
+        return $this->_state;
+    }
+
+    public function setZipCode($zip)
+    {
+        $this->_zipCode = $zip;
+        return $this;
+    }
+
+    public function getZipCode()
+    {
+        return $this->_zipCode;
+    }
+
+    public function setCountry($country)
+    {
+        $this->_country = $country;
+        return $this;
+    }
+
+    public function getCountry()
+    {
+        return $this->_country;
     }
 
 }
