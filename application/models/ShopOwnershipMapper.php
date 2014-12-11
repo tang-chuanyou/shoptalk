@@ -20,7 +20,7 @@ class Application_Model_ShopOwnershipMapper
         }
         return $this->_dbTable;
     }
-    
+
     public function find(Application_Model_ShopOwnership $ownership)
     {
         $db = $this->getDbTable();
@@ -39,5 +39,15 @@ class Application_Model_ShopOwnershipMapper
         $this->getDbTable()->insert($data);
     }
 
+    public function saveAndApprove(Application_Model_ShopOwnership $ownership)
+    {
+        $data = array(
+            'user_id' => $ownership->getUserId(),
+            'shop_id' => $ownership->getShopId(),
+            'description' => $ownership->getDescription(),
+            'status' => 'approved'
+        );
+        $this->getDbTable()->insert($data);
+    }
 }
 
