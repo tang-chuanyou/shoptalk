@@ -46,5 +46,15 @@ class Application_Model_ShopMapper
 
         $this->getDbTable()->insert($data);
     }
+
+    public function update(Application_Model_Shop $shop)
+    {
+        $db = $this->getDbTable();
+        $data = array('phone' => $shop->getPhone(),
+                      'image_url' => $shop->getImageURL());
+        $where = $db->getAdapter()->quoteInto('shop_id = ?', $shop->getId());
+        $db->update($data, $where);
+    }
+
 }
 
