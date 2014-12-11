@@ -31,13 +31,17 @@ class Application_Model_ShopMapper
     {
         $data = array(
             'shop_id' => $shop->getId(),
-            'addr' => $shop->getAddr(),
             'description' => $shop->getDesc(),
             'image_url' => $shop->getImageURL(),
             'name' => $shop->getName(),
             'phone' => $shop->getPhone(),
             'latitude' => $shop->getLatitude(),
-            'longitude' => $shop->getLongitude()
+            'longitude' => $shop->getLongitude(),
+            'street' => $shop->getStreet(),
+            'city' => $shop->getCity(),
+            'state' => $shop->getState(),
+            'zip_code' => $shop->getZipCode(),
+            'country' => $shop->getCountry()
         );
 
         $this->getDbTable()->insert($data);
