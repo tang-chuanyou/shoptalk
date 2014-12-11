@@ -137,7 +137,7 @@ class UserController extends Zend_Controller_Action
         try{
             //check if ownership record exists
             $check_result = $mapper->find($ownership);
-   
+
             if(0 < count($check_result)) {
                 // ownership exists
                 $status = 'exists';
@@ -152,9 +152,45 @@ class UserController extends Zend_Controller_Action
 
         $result = array('fyi'=>$fyi, 'status'=>$status);
         echo Zend_Json::encode($result);
-        
-        exit(); 
+
+        exit();
     }
+
+    public function applyShopOwnershipAndApproveAction()
+    {
+        $status = 'success';
+        $fyi = '';
+
+        $ownership = new Application_Model_ShopOwnership();
+        $mapper = new Application_Model_ShopOwnershipMapper();
+        $ownership->setUserId($this->_getParam("user_id"))
+                  ->setShopId($this->_getParam("shop_id"))
+                  ->setDescription($this->_getParam("description"))
+        ;
+        $fyi = $ownership->toArray();
+
+        try{
+            //check if ownership record exists
+            $check_result = $mapper->find($ownership);
+
+            if(0 < count($check_result)) {
+                // ownership exists
+                $status = 'exists';
+            }else{
+                // ownership not exists
+                $mapper->saveAndApprove($ownership);
+            }
+        }catch(Exception $e){
+            $status = 'exception';
+            $fyi = $e->getMessage();
+        }
+
+        $result = array('fyi'=>$fyi, 'status'=>$status);
+        echo Zend_Json::encode($result);
+
+        exit();
+    }
+
 
     public function checkOwnershipAction()
     {
