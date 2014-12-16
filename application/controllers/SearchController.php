@@ -33,7 +33,7 @@ class SearchController extends Zend_Controller_Action
         $location = $this->_getParam('location');
         $result = $this->search($term, $location);
 
-        echo Zend_Json::encode($result);
+        echo Zend_Json::encode(array('term'=>$term, 'location'=>$location, 'result'=>$result));
         exit();
     }
 
