@@ -12,7 +12,7 @@ $GLOBALS = array(
 'DEFAULT_LOCATION' => 'San Francisco, CA',
 'SEARCH_LIMIT' => 3,
 'SEARCH_PATH' => '/v2/search/',
-'BUSINESS_PATH' => '/v2/business/')
+'BUSINESS_PATH' => '/v2/business/');
 
 class SearchController extends Zend_Controller_Action
 {
