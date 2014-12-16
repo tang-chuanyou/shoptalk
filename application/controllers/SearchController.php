@@ -39,9 +39,9 @@ class SearchController extends Zend_Controller_Action
         $yelp_businesses = $yelp_array['businesses'];
         
         foreach ($yelp_businesses as $business) :
-            $shop_id = business['id'];
-            $name = business['name'];
-            $image_url = business['image_url'];
+            $shop_id = $business['id'];
+            $name = $business['name'];
+            $image_url = $business['image_url'];
             $business_map = array('shop_id' => $shop_id,
                                   'name' => $name,
                                   'image_url' => $image_url);
