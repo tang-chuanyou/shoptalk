@@ -2,17 +2,17 @@
 
 require_once('OAuth.php');
 
-$CONSUMER_KEY = 'At0JvIC6ipoyBDlkLkdFfg';
-$CONSUMER_SECRET = 'N-5hqnGE-Z0HorComNGl1oe90Yk';
-$TOKEN = '0T3SB6CpDFR60Ua9c6rOrwmGsvGrTSi2';
-$TOKEN_SECRET = 'QIBmqY3Bj28pPmoq45-bNuKNtas';
-
-$API_HOST = 'api.yelp.com';
-$DEFAULT_TERM = 'dinner';
-$DEFAULT_LOCATION = 'San Francisco, CA';
-$SEARCH_LIMIT = 3;
-$SEARCH_PATH = '/v2/search/';
-$BUSINESS_PATH = '/v2/business/';
+$GLOBALS = array(
+'CONSUMER_KEY' => 'At0JvIC6ipoyBDlkLkdFfg',
+'CONSUMER_SECRET' => 'N-5hqnGE-Z0HorComNGl1oe90Yk',
+'TOKEN' => '0T3SB6CpDFR60Ua9c6rOrwmGsvGrTSi2',
+'TOKEN_SECRET' => 'QIBmqY3Bj28pPmoq45-bNuKNtas',
+'API_HOST' => 'api.yelp.com',
+'DEFAULT_TERM' => 'dinner',
+'DEFAULT_LOCATION' => 'San Francisco, CA',
+'SEARCH_LIMIT' => 3,
+'SEARCH_PATH' => '/v2/search/',
+'BUSINESS_PATH' => '/v2/business/')
 
 class SearchController extends Zend_Controller_Action
 {
