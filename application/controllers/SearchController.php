@@ -37,8 +37,8 @@ class SearchController extends Zend_Controller_Action
 
         $yelp_array = Zend_Json::decode($yelp_json);
         $yelp_businesses = $yelp_array['businesses'];
-        
-        foreach ($yelp_businesses as $business) :
+
+        foreach ($yelp_businesses as $business) {
             $shop_id = $business['id'];
             $name = $business['name'];
             $image_url = $business['image_url'];
@@ -46,6 +46,7 @@ class SearchController extends Zend_Controller_Action
                                   'name' => $name,
                                   'image_url' => $image_url);
             $result[] = $business_map;
+        }
 
         echo Zend_Json::encode(array('term'=>$term, 'location'=>$location, 'result'=>$result));
         exit();
