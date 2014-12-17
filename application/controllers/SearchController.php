@@ -1,5 +1,7 @@
 <?php
 
+include 'YelpSearch.php'
+
 class SearchController extends Zend_Controller_Action
 {
 

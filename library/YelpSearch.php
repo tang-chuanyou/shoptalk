@@ -1,6 +1,6 @@
 <?php
 
-include 'YelpSearch.php';
+include 'OAuth.php'
 
 class YelpSearch
 {
