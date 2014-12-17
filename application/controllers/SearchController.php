@@ -1,6 +1,6 @@
 <?php
 
-include 'YelpSearch.php'
+include 'YelpSearch.php';
 
 class SearchController extends Zend_Controller_Action
 {
@@ -21,9 +21,9 @@ class SearchController extends Zend_Controller_Action
 
         $term = $this->_getParam('term');
         $location = $this->_getParam('location');
-        
+
         $yelp = new YelpSearch();
-        $yelp_json = $yelp_search->search($term, $location);
+        $yelp_json = $yelp->search($term, $location);
 
         $yelp_array = Zend_Json::decode($yelp_json);
         $yelp_businesses = $yelp_array['businesses'];
