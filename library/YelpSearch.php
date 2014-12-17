@@ -1,21 +1,21 @@
 <?php
 
-require_once('OAuth.php');
-
-$GLOBALS = array(
-'CONSUMER_KEY' => 'At0JvIC6ipoyBDlkLkdFfg',
-'CONSUMER_SECRET' => 'N-5hqnGE-Z0HorComNGl1oe90Yk',
-'TOKEN' => '0T3SB6CpDFR60Ua9c6rOrwmGsvGrTSi2',
-'TOKEN_SECRET' => 'QIBmqY3Bj28pPmoq45-bNuKNtas',
-'API_HOST' => 'api.yelp.com',
-'DEFAULT_TERM' => 'dinner',
-'DEFAULT_LOCATION' => 'San Francisco, CA',
-'SEARCH_LIMIT' => 3,
-'SEARCH_PATH' => '/v2/search/',
-'BUSINESS_PATH' => '/v2/business/');
+include 'YelpSearch.php';
 
 class YelpSearch
 {
+    public static $CONSUMER_KEY = 'At0JvIC6ipoyBDlkLkdFfg';
+    public static $CONSUMER_SECRET = 'N-5hqnGE-Z0HorComNGl1oe90Yk';
+    public static $TOKEN = '0T3SB6CpDFR60Ua9c6rOrwmGsvGrTSi2';
+    public static $TOKEN_SECRET = 'QIBmqY3Bj28pPmoq45-bNuKNtas';
+    public static $API_HOST = 'api.yelp.com';
+    public static $DEFAULT_TERM = 'dinner';
+    public static $DEFAULT_LOCATION = 'San Francisco, CA';
+    public static $SEARCH_LIMIT = 3;
+    public static $SEARCH_PATH = '/v2/search/';
+    public static $BUSINESS_PATH = '/v2/business/';
+
+    
     /** 
      * Makes a request to the Yelp API and returns the response
      * 
@@ -26,9 +26,9 @@ class YelpSearch
     function request($host, $path) {
         $unsigned_url = "http://" . $host . $path;
         // Token object built using the OAuth library
-        $token = new OAuthToken($GLOBALS['TOKEN'], $GLOBALS['TOKEN_SECRET']);
+        $token = new OAuthToken($TOKEN, $TOKEN_SECRET);
         // Consumer object built using the OAuth library
-        $consumer = new OAuthConsumer($GLOBALS['CONSUMER_KEY'], $GLOBALS['CONSUMER_SECRET']);
+        $consumer = new OAuthConsumer($CONSUMER_KEY, $CONSUMER_SECRET);
         // Yelp uses HMAC SHA1 encoding
         $signature_method = new OAuthSignatureMethod_HMAC_SHA1();
         $oauthrequest = OAuthRequest::from_consumer_and_token(
@@ -64,11 +64,11 @@ class YelpSearch
     function search($term, $location) {
         $url_params = array();
 
-        $url_params['term'] = $term ?: $GLOBALS['DEFAULT_TERM'];
-        $url_params['location'] = $location?: $GLOBALS['DEFAULT_LOCATION'];
-        $url_params['limit'] = $GLOBALS['SEARCH_LIMIT'];
-        $search_path = $GLOBALS['SEARCH_PATH'] . "?" . http_build_query($url_params);
+        $url_params['term'] = $term ?: $DEFAULT_TERM;
+        $url_params['location'] = $location?: $DEFAULT_LOCATION;
+        $url_params['limit'] = $SEARCH_LIMIT;
+        $search_path = $SEARCH_PATH . "?" . http_build_query($url_params);
 
-        return $this->request($GLOBALS['API_HOST'], $search_path);
+        return $this->request($API_HOST, $search_path);
     }
 }
