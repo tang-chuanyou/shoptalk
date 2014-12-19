@@ -11,6 +11,7 @@ class YelpSearch
     public static $API_HOST = 'api.yelp.com';
     public static $DEFAULT_TERM = 'dinner';
     public static $DEFAULT_LOCATION = 'San Francisco, CA';
+    public static $DEFAULT_COORDINATE = '37.764799, -122.46299';
     public static $SEARCH_LIMIT = 3;
     public static $SEARCH_PATH = '/v2/search/';
     public static $BUSINESS_PATH = '/v2/business/';
@@ -66,6 +67,24 @@ class YelpSearch
 
         $url_params['term'] = $term ?: $DEFAULT_TERM;
         $url_params['location'] = $location?: $DEFAULT_LOCATION;
+        $url_params['limit'] = $SEARCH_LIMIT;
+        $search_path = $SEARCH_PATH . "?" . http_build_query($url_params);
+
+        return $this->request($API_HOST, $search_path);
+    }
+    
+    /**
+     * Query the Search API by a search term and coordinate 
+     * 
+     * @param    $term        The search term passed to the API 
+     * @param    $coordinate  The search coordinate passed to the API 
+     * @return   The JSON response from the request 
+     */
+    function search($term, $coordinate) {
+        $url_params = array();
+
+        $url_params['term'] = $term ?: $DEFAULT_TERM;
+        $url_params['coordinate'] = $coordinate?: $DEFAULT_COORDINATE;
         $url_params['limit'] = $SEARCH_LIMIT;
         $search_path = $SEARCH_PATH . "?" . http_build_query($url_params);
 
