@@ -72,7 +72,6 @@ class YelpSearch
 
         return $this->request(self::$API_HOST, $search_path);
     }
-<<<<<<< HEAD
     
     /**
      * Query the Search API by a search term and coordinate 
@@ -92,6 +91,3 @@ class YelpSearch
         return $this->request($API_HOST, $search_path);
     }
 }
-=======
-}
->>>>>>> e44c9f6bb2a4712ff2c1aeeb53c193ec2a58e07e
