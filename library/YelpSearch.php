@@ -16,8 +16,8 @@ class YelpSearch
     public static $SEARCH_PATH = '/v2/search/';
     public static $BUSINESS_PATH = '/v2/business/';
 
-    
-    /** 
+
+    /**
      * Makes a request to the Yelp API and returns the response
      * 
      * @param    $host    The domain host of the API 
@@ -27,9 +27,9 @@ class YelpSearch
     function request($host, $path) {
         $unsigned_url = "http://" . $host . $path;
         // Token object built using the OAuth library
-        $token = new OAuthToken($TOKEN, $TOKEN_SECRET);
+        $token = new OAuthToken(self::$TOKEN, self::$TOKEN_SECRET);
         // Consumer object built using the OAuth library
-        $consumer = new OAuthConsumer($CONSUMER_KEY, $CONSUMER_SECRET);
+        $consumer = new OAuthConsumer(self::$CONSUMER_KEY, self::$CONSUMER_SECRET);
         // Yelp uses HMAC SHA1 encoding
         $signature_method = new OAuthSignatureMethod_HMAC_SHA1();
         $oauthrequest = OAuthRequest::from_consumer_and_token(
@@ -65,13 +65,14 @@ class YelpSearch
     function search($term, $location) {
         $url_params = array();
 
-        $url_params['term'] = $term ?: $DEFAULT_TERM;
-        $url_params['location'] = $location?: $DEFAULT_LOCATION;
-        $url_params['limit'] = $SEARCH_LIMIT;
-        $search_path = $SEARCH_PATH . "?" . http_build_query($url_params);
+        $url_params['term'] = $term ?: self::$DEFAULT_TERM;
+        $url_params['location'] = $location?: self::$DEFAULT_LOCATION;
+        $url_params['limit'] = self::$SEARCH_LIMIT;
+        $search_path = self::$SEARCH_PATH . "?" . http_build_query($url_params);
 
-        return $this->request($API_HOST, $search_path);
+        return $this->request(self::$API_HOST, $search_path);
     }
+<<<<<<< HEAD
     
     /**
      * Query the Search API by a search term and coordinate 
@@ -91,3 +92,6 @@ class YelpSearch
         return $this->request($API_HOST, $search_path);
     }
 }
+=======
+}
+>>>>>>> e44c9f6bb2a4712ff2c1aeeb53c193ec2a58e07e

@@ -185,7 +185,7 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'shoptalk'
 --
-/*!50003 DROP PROCEDURE IF EXISTS `geodist` */;
+/*!50003 DROP PROCEDURE IF EXISTS `p_shopsbydist` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -195,7 +195,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`tang`@`localhost` PROCEDURE `geodist`(IN mylat float, IN mylon float, IN dist int)
+CREATE DEFINER=`tang`@`localhost` PROCEDURE `p_shopsbydist`(IN mylat float, IN mylon float, IN dist int)
 BEGIN
 
 declare lon1 float; 
@@ -233,4 +233,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-16 21:33:27
+-- Dump completed on 2014-12-17  2:13:57
