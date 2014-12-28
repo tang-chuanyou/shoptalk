@@ -80,14 +80,14 @@ class YelpSearch
      * @param    $coordinate  The search coordinate passed to the API 
      * @return   The JSON response from the request 
      */
-    function search($term, $coordinate) {
+    function searchByCoordinate($term, $coordinate) {
         $url_params = array();
 
-        $url_params['term'] = $term ?: $DEFAULT_TERM;
-        $url_params['coordinate'] = $coordinate?: $DEFAULT_COORDINATE;
-        $url_params['limit'] = $SEARCH_LIMIT;
-        $search_path = $SEARCH_PATH . "?" . http_build_query($url_params);
+        $url_params['term'] = $term ?: self::$DEFAULT_TERM;
+        $url_params['ll'] = $coordinate?: self::$DEFAULT_COORDINATE;
+        $url_params['limit'] = self::$SEARCH_LIMIT;
+        $search_path = self::$SEARCH_PATH . "?" . http_build_query($url_params);
 
-        return $this->request($API_HOST, $search_path);
+        return $this->request(self::$API_HOST, $search_path);
     }
 }
