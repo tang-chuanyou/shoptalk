@@ -115,7 +115,8 @@ class SearchController extends Zend_Controller_Action
                 $result[] = $business_map;
             }
 
-            $status = $result;
+            $fyi = $result;
+            $status = 'success';
         }catch(Exception $e){
             $status = 'exception[' .  $e->getMessage() . ']';
         }
