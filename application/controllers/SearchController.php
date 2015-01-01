@@ -124,5 +124,29 @@ class SearchController extends Zend_Controller_Action
         echo Zend_Json::encode(array('fyi'=>$fyi, 'status'=>$status));
         exit();
     }
+
+    public function searchShopByCoordinateAction()
+    {
+        $status = 'success';
+        $fyi = '';
+
+        $shop_mapper = new Application_Model_ShopMapper();
+        $lat = $this->_getParam("lat");
+        $lon = $this->_getParam("lon");
+        $dist = $this->_getParam("dist");
+
+        try{
+            $fyi = $shop_mapper->searchByCoordinate($lat,$lon,$dist);
+            $status = 'success';
+        }catch(Exception $e){
+            $status = 'exception[' .  $e.getMessage() . ']';
+        }
+
+        $result = array('fyi'=>$fyi, 'status'=>$status);
+        echo Zend_Json::encode($result);
+        exit();
+
+    }
+
 }
 

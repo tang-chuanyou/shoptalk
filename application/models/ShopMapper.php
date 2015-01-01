@@ -56,5 +56,13 @@ class Application_Model_ShopMapper
         $db->update($data, $where);
     }
 
+    public function searchByCoordinate($lat, $lon, $dist)
+    {
+        $adapter = Zend_Db_Table::getDefaultAdapter();
+        $result = $adapter->query("call p_shopsbydist(?, ?, ?)", array($lat, $lon, $dist))
+                          ->fetchAll();
+        return $result;
+    }
+
 }
 
