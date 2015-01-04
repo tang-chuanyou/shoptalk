@@ -32,6 +32,7 @@ class ShopController extends Zend_Controller_Action
              ->setState($this->_getParam("state"))
              ->setZipCode($this->_getParam("zip_code"))
              ->setCountry($this->_getParam("country"))
+             ->setTerms($this->_getParam("terms"))
         ;
         $fyi = $shop->getId();
 
@@ -73,6 +74,7 @@ class ShopController extends Zend_Controller_Action
              ->setState($this->_getParam("state"))
              ->setZipCode($this->_getParam("zip_code"))
              ->setCountry($this->_getParam("country"))
+             ->setTerms($this->_getParam("terms"))
         ;
         $fyi = $shop->getId();
 

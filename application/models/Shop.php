@@ -14,6 +14,7 @@ class Application_Model_Shop
     protected $_state;
     protected $_zipCode;
     protected $_country;
+    protected $_terms;
 
     public function __construct(array $options = null)
     {
@@ -193,6 +194,17 @@ class Application_Model_Shop
     public function getCountry()
     {
         return $this->_country;
+    }
+
+    public function setTerms($terms)
+    {
+        $this->_terms = $terms;
+        return $this;
+    }
+
+    public function getTerms()
+    {
+        return $this->_terms;
     }
 
 }

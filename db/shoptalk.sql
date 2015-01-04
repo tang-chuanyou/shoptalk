@@ -69,7 +69,7 @@ CREATE TABLE `t_shopownership` (
 
 LOCK TABLES `t_shopownership` WRITE;
 /*!40000 ALTER TABLE `t_shopownership` DISABLE KEYS */;
-INSERT INTO `t_shopownership` VALUES ('alyss@qq.com','shoptalk::Bensalem-Franklin Commons Apartments-AF2616FEDC183824D3BEBCA0044762CB','shop creation','','approved'),('alyss@qq.com','yelp::vietnam-cafe-philadelphia','this is my shop','/images/93E6550AC77971306A661EF82E69AEC5.png','approved'),('alyss@qq.com','yelp::vietnam-palace-philadelphia','this is my shop 2','/images/121F6EC8713BFD3A7C6143FB2A0F5D4D.png','approved'),('chuanyou.tang@gmail.com','shoptalk::--E27818691AA4D6F161D7F44ED2D85AE3','shop creation','','approved'),('chuanyou.tang@gmail.com','shoptalk::bensalem-tang 1st shop-92518EB18CD8FBC1312C9BA786BD08B9','shop creation','','approved'),('chuanyou.tang@gmail.com','shoptalk::bensalem-tang another shop-E8DAEA866DDF87C842B6E4CFC3FE3A22','shop creation','','approved'),('chuanyou.tang@gmail.com','shoptalk::bensalem-tang\'s 2nd shop-1CE6A877AF4D48572C0959BCFD608D88','shop creation','','approved'),('chuanyou.tang@gmail.com','shoptalk::bensalem-tang\'s 3rd shop-1CE6A877AF4D48572C0959BCFD608D88','shop creation','','approved'),('chuanyou.tang@gmail.com','shoptalk::bensalem-tang\'s shop-52E9DEB14B46DD6AB5D73591D7C4D44E','shop creation','','approved'),('chuanyou.tang@gmail.com','shoptalk::Bensalem-Tang\'s Shop-989B9BA092133DDEACFD6FD8BEF64945','shop creation','','approved'),('chuanyou.tang@gmail.com','yelp::vietnam-cafe-philadelphia','','/images/B167885ADCF5F96B38BE738CF7FC1917.png','applied'),('chuanyou.tang@gmail.com','yelp::vietnam-cafe-restaurant-telford','yes i am the owner','/images/93E6550AC77971306A661EF82E69AEC5.png','approved');
+INSERT INTO `t_shopownership` VALUES ('alyss@qq.com','shoptalk::Bensalem-Franklin Commons Apartments-AF2616FEDC183824D3BEBCA0044762CB','shop creation','','approved'),('alyss@qq.com','yelp::vietnam-cafe-philadelphia','this is my shop','/images/93E6550AC77971306A661EF82E69AEC5.png','approved'),('alyss@qq.com','yelp::vietnam-palace-philadelphia','this is my shop 2','/images/121F6EC8713BFD3A7C6143FB2A0F5D4D.png','approved'),('chuanyou.tang@gmail.com','shoptalk::--E27818691AA4D6F161D7F44ED2D85AE3','shop creation','','approved'),('chuanyou.tang@gmail.com','shoptalk::bensalem-tang 1st shop-92518EB18CD8FBC1312C9BA786BD08B9','shop creation','','approved'),('chuanyou.tang@gmail.com','shoptalk::bensalem-tang another shop-E8DAEA866DDF87C842B6E4CFC3FE3A22','shop creation','','approved'),('chuanyou.tang@gmail.com','shoptalk::bensalem-tang\'s 2nd shop-1CE6A877AF4D48572C0959BCFD608D88','shop creation','','approved'),('chuanyou.tang@gmail.com','shoptalk::bensalem-tang\'s 3rd shop-1CE6A877AF4D48572C0959BCFD608D88','shop creation','','approved'),('chuanyou.tang@gmail.com','shoptalk::bensalem-tang\'s shop-52E9DEB14B46DD6AB5D73591D7C4D44E','shop creation','','approved'),('chuanyou.tang@gmail.com','shoptalk::Bensalem-Tang\'s Shop-989B9BA092133DDEACFD6FD8BEF64945','shop creation','','approved'),('chuanyou.tang@gmail.com','yelp::vietnam-cafe-philadelphia','','/images/B167885ADCF5F96B38BE738CF7FC1917.png','approved'),('chuanyou.tang@gmail.com','yelp::vietnam-cafe-restaurant-telford','yes i am the owner','/images/93E6550AC77971306A661EF82E69AEC5.png','approved');
 /*!40000 ALTER TABLE `t_shopownership` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,7 +130,7 @@ CREATE TABLE `t_shops` (
 
 LOCK TABLES `t_shops` WRITE;
 /*!40000 ALTER TABLE `t_shops` DISABLE KEYS */;
-INSERT INTO `t_shops` VALUES ('shoptalk::Bensalem-Franklin Commons Apartments-AF2616FEDC183824D3BEBCA0044762CB','Franklin Commons Apartments','2156398400','/images/93E6550AC77971306A661EF82E69AEC5.png',40.1013985,-74.9344025,'1400 Cardinal Drive','Bensalem','PA','19020','USA','apartments, franklin commons',''),('shoptalk::Bensalem-Tang\'s shop-989B9BA092133DDEACFD6FD8BEF64945','Tang\'s shop','2158084990','/images/FCFD9C749D958E5320C265C3BE2C1F21.png',40.0997009,-74.9328995,'1716 Robin Dr.','Bensalem','PA','19020','USA','tang, water',''),('yelp::vietnam-cafe-philadelphia','Vietnam Cafe','2157290272','/images/121F6EC8713BFD3A7C6143FB2A0F5D4D.png',39.9481773,-75.2168884,'816 S 47th St','Philadelphia','PA','19143','US','',''),('yelp::vietnam-cafe-restaurant-telford','Vietnam Cafe Restaurant','2157233335','http://s3-media1.fl.yelpcdn.com/bphoto/4Ek3Pi6zujif9ialMFbsRA/ms.jpg',40.3235283,-75.3304977,'179 Penn Ave','Telford','PA','18969','US','',''),('yelp::vietnam-palace-philadelphia','Vietnam Palace','2155929596','http://s3-media2.fl.yelpcdn.com/bphoto/vzeVcFXHXqmWpElHDXjYug/ms.jpg',39.9562950,-75.1574936,'222 N 11th St','Philadelphia','PA','19107','US','',''),('yelp::vietnam-restaurant-philadelphia-2','Vietnam Restaurant','2155921163','http://s3-media4.fl.yelpcdn.com/bphoto/M6Qk5KoZLzWBp5shaGqh4w/ms.jpg',39.9563332,-75.1572113,'221 N 11th St','Philadelphia','PA','19107','US','','');
+INSERT INTO `t_shops` VALUES ('shoptalk::Bensalem-Franklin Commons Apartments-AF2616FEDC183824D3BEBCA0044762CB','Franklin Commons Apartments','2156398400','/images/93E6550AC77971306A661EF82E69AEC5.png',40.1013985,-74.9344025,'1400 Cardinal Drive','Bensalem','PA','19020','USA','apartments, franklin commons',''),('shoptalk::Bensalem-Tang\'s shop-989B9BA092133DDEACFD6FD8BEF64945','Tang\'s shop','2158084990','/images/FCFD9C749D958E5320C265C3BE2C1F21.png',40.0997009,-74.9328995,'1716 Robin Dr.','Bensalem','PA','19020','USA','tang, water',''),('yelp::vietnam-cafe-philadelphia','Vietnam Cafe','2157290273','/images/FCFD9C749D958E5320C265C3BE2C1F21.png',39.9481773,-75.2168884,'816 S 47th St','Philadelphia','PA','19143','US','apartment',''),('yelp::vietnam-cafe-restaurant-telford','Vietnam Cafe Restaurant','2157233335','http://s3-media1.fl.yelpcdn.com/bphoto/4Ek3Pi6zujif9ialMFbsRA/ms.jpg',40.3235283,-75.3304977,'179 Penn Ave','Telford','PA','18969','US','',''),('yelp::vietnam-palace-philadelphia','Vietnam Palace','2155929596','http://s3-media2.fl.yelpcdn.com/bphoto/vzeVcFXHXqmWpElHDXjYug/ms.jpg',39.9562950,-75.1574936,'222 N 11th St','Philadelphia','PA','19107','US','',''),('yelp::vietnam-restaurant-philadelphia-2','Vietnam Restaurant','2155921163','http://s3-media4.fl.yelpcdn.com/bphoto/M6Qk5KoZLzWBp5shaGqh4w/ms.jpg',39.9563332,-75.1572113,'221 N 11th St','Philadelphia','PA','19107','US','','');
 /*!40000 ALTER TABLE `t_shops` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,27 +196,56 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`tang`@`localhost` PROCEDURE `p_shopsbydist`(IN mylat float, IN mylon float, IN dist int)
+CREATE DEFINER=`tang`@`localhost` PROCEDURE `p_shopsbydist`(IN mylat float, IN mylon float, IN mydist int, IN myterms varchar(1000))
 BEGIN
 
+
+
+
 declare lon1 float; 
+
 declare lon2 float;
+
 declare lat1 float; 
+
 declare lat2 float;
 
 
-set lon1 = mylon-dist/abs(cos(radians(mylat))*69);
-set lon2 = mylon+dist/abs(cos(radians(mylat))*69);
-set lat1 = mylat-(dist/69); 
-set lat2 = mylat+(dist/69);
+
+
+
+
+
+set lon1 = mylon-mydist/abs(cos(radians(mylat))*69);
+
+set lon2 = mylon+mydist/abs(cos(radians(mylat))*69);
+
+set lat1 = mylat-(mydist/69); 
+
+set lat2 = mylat+(mydist/69);
+
+
+
+
+
+
+
 
 
 
 SELECT s.*,3956 * 2 * ASIN(SQRT( POWER(SIN((s.latitude -mylat) * pi()/180 / 2), 2) +COS(s.latitude * pi()/180) * COS(s.latitude * pi()/180) *POWER(SIN((s.longitude -mylon) * pi()/180 / 2), 2) )) as distance 
+
 FROM t_shops s
-WHERE s.longitude between lon1 and lon2 
+
+WHERE s.terms like myterms
+and s.longitude between lon1 and lon2 
+
 and s.latitude between lat1 and lat2 
-having distance < dist ORDER BY Distance limit 10;
+
+having distance < mydist ORDER BY Distance limit 10;
+
+
+
 
 END ;;
 DELIMITER ;
@@ -234,4 +263,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-04  0:04:38
+-- Dump completed on 2015-01-04  0:41:11

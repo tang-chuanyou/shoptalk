@@ -41,7 +41,8 @@ class Application_Model_ShopMapper
             'city' => $shop->getCity(),
             'state' => $shop->getState(),
             'zip_code' => $shop->getZipCode(),
-            'country' => $shop->getCountry()
+            'country' => $shop->getCountry(),
+            'terms'=> $shop->getTerms()
         );
 
         $this->getDbTable()->insert($data);
@@ -51,15 +52,16 @@ class Application_Model_ShopMapper
     {
         $db = $this->getDbTable();
         $data = array('phone' => $shop->getPhone(),
-                      'image_url' => $shop->getImageURL());
+                      'image_url' => $shop->getImageURL(),
+                      'terms' => $shop->getTerms());
         $where = $db->getAdapter()->quoteInto('shop_id = ?', $shop->getId());
         $db->update($data, $where);
     }
 
-    public function searchByCoordinate($lat, $lon, $dist)
+    public function searchByCoordinate($lat, $lon, $dist, $terms)
     {
         $adapter = Zend_Db_Table::getDefaultAdapter();
-        $result = $adapter->query("call p_shopsbydist(?, ?, ?)", array($lat, $lon, $dist))
+        $result = $adapter->query("call p_shopsbydist(?, ?, ?, ?)", array($lat, $lon, $dist, '%'.$terms.'%'))
                           ->fetchAll();
         return $result;
     }

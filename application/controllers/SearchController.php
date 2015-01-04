@@ -134,9 +134,10 @@ class SearchController extends Zend_Controller_Action
         $lat = $this->_getParam("lat");
         $lon = $this->_getParam("lon");
         $dist = $this->_getParam("dist");
+        $terms = $this->_getParam("terms");
 
         try{
-            $fyi = $shop_mapper->searchByCoordinate($lat,$lon,$dist);
+            $fyi = $shop_mapper->searchByCoordinate($lat,$lon,$dist,$terms);
             $status = 'success';
         }catch(Exception $e){
             $status = 'exception[' .  $e.getMessage() . ']';
