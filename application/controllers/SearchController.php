@@ -36,7 +36,10 @@ class SearchController extends Zend_Controller_Action
                 $name = $business['name'];
                 $phone = $business['phone'];
                 $shop_location = $business['location'];
-                $street = $shop_location['address'][0];
+                $street = '';
+                if(isset($shop_location['address'][0])) {
+                    $street = $shop_location['address'][0];
+                }
                 $city = $shop_location['city'];
                 $state = $shop_location['state_code'];
                 $zip_code = $shop_location['postal_code'];
@@ -91,7 +94,10 @@ class SearchController extends Zend_Controller_Action
                 $name = $business['name'];
                 $phone = $business['phone'];
                 $shop_location = $business['location'];
-                $street = $shop_location['address'][0];
+                $street = '';
+                if(isset($shop_location['address'][0])) {
+                    $street = $shop_location['address'][0];
+                }
                 $city = $shop_location['city'];
                 $state = $shop_location['state_code'];
                 $zip_code = $shop_location['postal_code'];
@@ -140,7 +146,7 @@ class SearchController extends Zend_Controller_Action
             $fyi = $shop_mapper->searchByCoordinate($lat,$lon,$dist,$terms);
             $status = 'success';
         }catch(Exception $e){
-            $status = 'exception[' .  $e.getMessage() . ']';
+            $status = 'exception[' .  $e->getMessage() . ']';
         }
 
         $result = array('fyi'=>$fyi, 'status'=>$status);
