@@ -48,6 +48,8 @@ class UserController extends Zend_Controller_Action
         $status = 'success';
         $fyi = array();
 
+        $this::checkSession();
+
         $user = new Application_Model_User();
         $userfav_mapper = new Application_Model_UserFavoriteMapper();
 
@@ -247,6 +249,8 @@ class UserController extends Zend_Controller_Action
                 // user exists
                 $status = 'exists';
                 $fyi = $check_result;
+                // set session
+                $_SESSION['user_id'] = $user->getId();
             }else{
                 // user not exists
                 $status = 'not exists';
@@ -288,6 +292,15 @@ class UserController extends Zend_Controller_Action
         exit();
     }
 
+    // helper function to check user session
+    // and respond properly if no active session 
+    public function checkSession()
+    {
+        if(! isset($_SESSION['user_id']) ) {
+            echo Zend_Json::encode(array('fyi'=>'please sign in first.', 'status'=>'no-active-session'));
+            exit();
+        }
+    }
 }
 
 
