@@ -47,6 +47,31 @@ INSERT INTO `t_messages` VALUES (54,'yelp::vietnam-cafe-restaurant-telford','aly
 UNLOCK TABLES;
 
 --
+-- Table structure for table `t_remember_me`
+--
+
+DROP TABLE IF EXISTS `t_remember_me`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_remember_me` (
+  `user_id` varchar(100) NOT NULL,
+  `user_token` varchar(250) NOT NULL,
+  `creation_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`,`user_token`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_remember_me`
+--
+
+LOCK TABLES `t_remember_me` WRITE;
+/*!40000 ALTER TABLE `t_remember_me` DISABLE KEYS */;
+INSERT INTO `t_remember_me` VALUES ('chuanyou.tang@gmail.com','23fbaf54877f7936bfbf8e22c7ada2809a11470dec93f8818eba0e466d2e29daec6da52416d9c68ccf04c2547b3545a140032c5e412a287c7f8b2102374bf5c60f1ff91325f99a395c7d950d5eae0aa0b3dd4c5157dadf76534b1c2dd9bd76519ddcf1a5ca85d03191d39cb0654f3342ad52b55257d47339','2015-01-17 19:56:15'),('chuanyou.tang@gmail.com','376adc6654bad428fedd48d7bd7ee67af669cab8774dd721520a9ec563ef8c877502a8d30f55d0b5a6a36aca557161fb0ab5fea60116a0bcea455bcd014734c6c77a3ca928aecea6bc16e22fd8f32d5793cd00974957eea1490aac8e8e557908da1f1331af1d17c7c10fa869d18e167ff629eaa8aebfdaaf','2015-01-17 20:00:26'),('chuanyou.tang@gmail.com','8c38ffab0272e252cf572fd90f341feda4fa6ee2e37b584b2034ec0649e749cc1020e90f078e42a83f4f6c1f8779af0deb0ac310d42f16172e17423308effc2b97fef429feaccc5ef4ff2bcc574f5974ad78fa32a083a587efdbe33a60caff100575581f8b8bf1270b31bdb94f515fc03b456bbefcea18bb','2015-01-17 19:55:05');
+/*!40000 ALTER TABLE `t_remember_me` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `t_shopownership`
 --
 
@@ -263,4 +288,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-08  0:59:54
+-- Dump completed on 2015-01-17 20:07:00
