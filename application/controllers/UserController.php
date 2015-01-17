@@ -1,5 +1,7 @@
 <?php
 
+include 'UserSession.php';
+
 class UserController extends Zend_Controller_Action
 {
 
@@ -18,9 +20,11 @@ class UserController extends Zend_Controller_Action
         $status = 'success';
         $fyi = ''; 
 
+        UserSession::checkActiveSession('Application_Model_RememberMeMapper::check');
+
         $user_fav = new Application_Model_UserFavorite();
         $userfav_mapper = new Application_Model_UserFavoriteMapper();
-        $user_fav->setUserId($this->_getParam("user_id"))
+        $user_fav->setUserId($_SESSION[UserSession::$SESSION_USER_ID])
                  ->setShopId($this->_getParam("shop_id"));
         $fyi = 'user[' . $user_fav->getUserId() . ']shop[' . $user_fav->getShopId() . ']';
 
@@ -48,12 +52,12 @@ class UserController extends Zend_Controller_Action
         $status = 'success';
         $fyi = array();
 
-        $this::checkSession();
+        UserSession::checkActiveSession('Application_Model_RememberMeMapper::check');
 
         $user = new Application_Model_User();
         $userfav_mapper = new Application_Model_UserFavoriteMapper();
 
-        $user->setId($this->_getParam("user_id"));
+        $user->setId($_SESSION[UserSession::$SESSION_USER_ID]);
 
         try{
             $get_result = $userfav_mapper->getFavorites($user);
@@ -73,9 +77,11 @@ class UserController extends Zend_Controller_Action
         $status = 'success';
         $fyi = '';
 
+        UserSession::checkActiveSession();
+
         $user_fav = new Application_Model_UserFavorite();
         $userfav_mapper = new Application_Model_UserFavoriteMapper();
-        $user_fav->setUserId($this->_getParam("user_id"))
+        $user_fav->setUserId($_SESSION[UserSession::$SESSION_USER_ID])
                  ->setShopId($this->_getParam("shop_id"));
         $fyi = 'user[' . $user_fav->getUserId() . ']shop[' . $user_fav->getShopId() . ']';
 
@@ -101,10 +107,12 @@ class UserController extends Zend_Controller_Action
         $status = 'success';
         $fyi = '';
 
+        UserSession::checkActiveSession();
+
         $user_fav = new Application_Model_UserFavorite();
         $userfav_mapper = new Application_Model_UserFavoriteMapper();
 
-        $user_fav->setUserId($this->_getParam("user_id"))
+        $user_fav->setUserId($_SESSION[UserSession::$SESSION_USER_ID])
                  ->setShopId($this->_getParam("shop_id"))
         ;
         $fyi = 'user[' . $user_fav->getUserId() . ']shop[' . $user_fav->getShopId() . ']';
@@ -127,9 +135,11 @@ class UserController extends Zend_Controller_Action
         $status = 'success';
         $fyi = '';
 
+        UserSession::checkActiveSession();
+
         $ownership = new Application_Model_ShopOwnership();
         $mapper = new Application_Model_ShopOwnershipMapper();
-        $ownership->setUserId($this->_getParam("user_id"))
+        $ownership->setUserId($_SESSION[UserSession::$SESSION_USER_ID])
                   ->setShopId($this->_getParam("shop_id"))
                   ->setDescription($this->_getParam("description"))
                   ->setImageURL($this->_getParam("image_url"))
@@ -163,9 +173,11 @@ class UserController extends Zend_Controller_Action
         $status = 'success';
         $fyi = '';
 
+        UserSession::checkActiveSession();
+
         $ownership = new Application_Model_ShopOwnership();
         $mapper = new Application_Model_ShopOwnershipMapper();
-        $ownership->setUserId($this->_getParam("user_id"))
+        $ownership->setUserId($_SESSION[UserSession::$SESSION_USER_ID])
                   ->setShopId($this->_getParam("shop_id"))
                   ->setDescription($this->_getParam("description"))
         ;
@@ -199,9 +211,11 @@ class UserController extends Zend_Controller_Action
         $status = 'success';
         $fyi = '';
 
+        UserSession::checkActiveSession();
+
         $ownership = new Application_Model_ShopOwnership();
         $mapper = new Application_Model_ShopOwnershipMapper();
-        $ownership->setUserId($this->_getParam("user_id"))
+        $ownership->setUserId($_SESSION[UserSession::$SESSION_USER_ID])
                   ->setShopId($this->_getParam("shop_id"))
         ;
         $fyi = $ownership->toArray();
@@ -250,7 +264,7 @@ class UserController extends Zend_Controller_Action
                 $status = 'exists';
                 $fyi = $check_result;
                 // set session
-                $_SESSION['user_id'] = $user->getId();
+                UserSession::set($user->getId(), 'Application_Model_RememberMeMapper::check', 'Application_Model_RememberMeMapper::save');
             }else{
                 // user not exists
                 $status = 'not exists';
@@ -265,6 +279,32 @@ class UserController extends Zend_Controller_Action
 
         exit();
     }
+
+    public function signOutAction()
+    {
+        $status = 'fail';
+        $fyi = '';
+
+        try{
+            $user = new Application_Model_User();
+            $user->setId($this->_getParam("user_id"));
+
+            $fyi = $user->toArray();
+
+            UserSession::clear();
+             
+            $status = 'success';
+        }catch(Exception $e){
+            $status = 'exception';
+            $fyi = $e->getMessage();
+        }
+
+        $result = array('fyi'=>$fyi, 'status'=>$status);
+        echo Zend_Json::encode($result);
+
+        exit();
+    }
+
 
     public function signUpAction()
     {
@@ -292,15 +332,6 @@ class UserController extends Zend_Controller_Action
         exit();
     }
 
-    // helper function to check user session
-    // and respond properly if no active session 
-    public function checkSession()
-    {
-        if(! isset($_SESSION['user_id']) ) {
-            echo Zend_Json::encode(array('fyi'=>'please sign in first.', 'status'=>'no-active-session'));
-            exit();
-        }
-    }
 }
 
 

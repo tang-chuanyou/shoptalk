@@ -38,6 +38,7 @@
           <dbTableFile dbTableName="UserFavorites"/>
           <dbTableFile dbTableName="ShopOwnership"/>
           <dbTableFile dbTableName="ShopProducts"/>
+          <dbTableFile dbTableName="RememberMe"/>
         </dbTableDirectory>
         <modelFile modelName="ShopMapper"/>
         <modelFile modelName="Shop"/>

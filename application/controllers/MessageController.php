@@ -1,5 +1,7 @@
 <?php
 
+include 'UserSession.php';
+
 class MessageController extends Zend_Controller_Action
 {
 
@@ -17,6 +19,8 @@ class MessageController extends Zend_Controller_Action
     {
         $status = '';
         $fyi = '';
+
+        UserSession::checkActiveSession();
 
         $message = new Application_Model_Message();
         $mapper = new Application_Model_MessageMapper();
@@ -44,6 +48,8 @@ class MessageController extends Zend_Controller_Action
     {
         $status = '';
         $fyi = '';
+
+        UserSession::checkActiveSession();
 
         $shop = new Application_Model_Shop();
         $shop->setId($this->_getParam("shop_id"));
@@ -77,6 +83,8 @@ class MessageController extends Zend_Controller_Action
         $status = '';
         $fyi = '';
 
+        UserSession::checkActiveSession();
+
         $shop = new Application_Model_Shop();
         $shop->setId($this->_getParam("shop_id"));
         $fyi = ["shop_id"=>$shop->getId()];
@@ -101,6 +109,8 @@ class MessageController extends Zend_Controller_Action
     {
         $status = '';
         $fyi = '';
+
+        UserSession::checkActiveSession();
 
         $shop = new Application_Model_Shop();
         $shop->setId($this->_getParam("shop_id"));

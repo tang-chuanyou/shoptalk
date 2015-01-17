@@ -1,5 +1,7 @@
 <?php
 
+include 'UserSession.php';
+
 class ShopController extends Zend_Controller_Action
 {
 
@@ -17,6 +19,8 @@ class ShopController extends Zend_Controller_Action
     {
         $status = 'success';
         $fyi = '';
+
+        UserSession::checkActiveSession();
 
         $shop = new Application_Model_Shop();
         $shop_mapper = new Application_Model_ShopMapper();
@@ -59,6 +63,8 @@ class ShopController extends Zend_Controller_Action
     {
         $status = '';
         $fyi = '';
+
+        UserSession::checkActiveSession();
 
         $shop = new Application_Model_Shop();
         $shop_mapper = new Application_Model_ShopMapper();
@@ -106,6 +112,8 @@ class ShopController extends Zend_Controller_Action
     {
         $status = 'success';
         $fyi = '';
+
+        UserSession::checkActiveSession();
 
         $product = new Application_Model_ShopProduct();
         $product_mapper = new Application_Model_ShopProductMapper();
@@ -164,6 +172,8 @@ class ShopController extends Zend_Controller_Action
     {
         $status = 'success';
         $fyi = '';
+
+        UserSession::checkActiveSession();
 
         $product = new Application_Model_ShopProduct();
         $product->setShopId($this->_getParam("shop_id"))

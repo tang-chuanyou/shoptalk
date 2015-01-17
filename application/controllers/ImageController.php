@@ -1,5 +1,7 @@
 <?php
 
+include 'UserSession.php';
+
 class ImageController extends Zend_Controller_Action
 {
 
@@ -18,6 +20,8 @@ class ImageController extends Zend_Controller_Action
         $status = 'fail';
         $fyi = '';
         
+        UserSession::checkActiveSession();
+
         try{
             $upload = new Zend_File_Transfer_Adapter_Http();
 
